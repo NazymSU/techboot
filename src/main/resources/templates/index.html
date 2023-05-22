@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link th:insert="~{navbar.html}">
+
+
+
+</head>
+<body>
+<div class="container mt-3">
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>SURNAME</th>
+                    <th>EXAM</th>
+                    <th>MARK</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student :${studentter}" th:style="${student.exam<50?'color:red':'color:grey'}" >
+                    <td th:text="${student.id}"></td>
+                    <td th:text="${student.name}"></td>
+                    <td th:text="${student.surname}"></td>
+                    <td th:text="${student.exam}"></td>
+                    <td>
+                    <span th:if="${student.exam>=90}">A</span>
+                    <span th:if="${student.exam>=75 and student.exam<90}">B</span>
+                    <span th:if="${student.exam>=60 and student.exam<75}">C</span>
+                    <span th:if="${student.exam>=49 and student.exam<60}">D</span>
+                    <span th:if="${student.exam<50}">F</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
